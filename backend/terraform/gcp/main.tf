@@ -4,6 +4,7 @@ locals {
     "artifactregistry.googleapis.com",
     "storage.googleapis.com",
     "secretmanager.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
   ]
 
   src_dir = "${path.module}/../.."
