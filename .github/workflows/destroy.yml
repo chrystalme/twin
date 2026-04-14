@@ -19,6 +19,8 @@ jobs:
     defaults:
       run:
         working-directory: backend/terraform/gcp
+    env:
+      TF_WORKSPACE: gcp
 
     steps:
       - name: Verify confirmation
