@@ -4,7 +4,9 @@
 .terraform/
 .terraform.lock.hcl
 terraform.tfstate.d/
+*.tfvars
 *.tfvars.secret
+!*.tfvars.example
 
 # Lambda packages
 lambda-deployment.zip
