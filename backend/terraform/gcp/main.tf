@@ -106,6 +106,17 @@ resource "google_secret_manager_secret_iam_member" "runtime_access" {
 
 data "google_client_config" "default" {}
 
+data "google_project" "current" {}
+
+locals {
+  frontend_url = "https://${var.frontend_service_name}-${data.google_project.current.number}.${var.region}.run.app"
+
+  cors_origins = join(",", compact([
+    local.frontend_url,
+    var.cors_origins,
+  ]))
+}
+
 resource "docker_image" "backend" {
   name = local.image_tag
 
@@ -154,7 +165,7 @@ resource "google_cloud_run_v2_service" "backend" {
 
       env {
         name  = "CORS_ORIGINS"
-        value = var.cors_origins
+        value = local.cors_origins
       }
 
       env {

@@ -41,3 +41,6 @@ Thumbs.db
 
 # AWS
 .aws/
+key.json
+bootstrap-state.sh
+setup-wif.sh
